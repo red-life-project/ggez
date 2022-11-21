@@ -58,7 +58,7 @@ impl MainState {
 impl event::EventHandler<ggez::GameError> for MainState {
     fn update(&mut self, ctx: &mut Context) -> GameResult {
         const DESIRED_FPS: u32 = 60;
-        while ctx.time.check_update_time(DESIRED_FPS) {
+        if ctx.time.check_update_time(DESIRED_FPS) {
             self.angle += 0.01;
 
             if self.window_settings.toggle_fullscreen {
