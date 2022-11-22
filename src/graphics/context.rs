@@ -30,6 +30,7 @@ use winit::{
     self,
     dpi::{self, PhysicalPosition},
 };
+use winit::window::CursorIcon;
 
 pub(crate) struct FrameContext {
     pub cmd: wgpu::CommandEncoder,
@@ -437,6 +438,17 @@ impl GraphicsContext {
     pub fn set_window_position(&self, position: impl Into<winit::dpi::Position>) -> GameResult {
         self.window.set_outer_position(position);
         Ok(())
+    }
+
+    /// Set whether or not the mouse is hidden (invisible).
+    pub fn set_cursor_hidden(&mut self, hidden: bool) {
+        ctx.mouse.cursor_hidden = hidden;
+        self.window.set_cursor_visible(!hidden)
+    }
+
+    /// Modifies the mouse cursor type of the window.
+    pub fn set_cursor_type(&mut self, cursor_type: CursorIcon) {
+        self.window.set_cursor_icon(cursor_type)
     }
 
     /// Returns the size of the window in pixels as (width, height),
