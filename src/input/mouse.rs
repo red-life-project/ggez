@@ -211,14 +211,14 @@ pub fn handle_move(ctx: &mut Context, new_x: f32, new_y: f32) {
 }
 
 /// Set whether or not the mouse is hidden (invisible).
-// TODO: Move to graphics context (This isn't input)
+#[deprecated(since = "0.8.2", note = "Use ctx.gfx.set_cursor_hidden instead")]
 pub fn set_cursor_hidden(ctx: &mut Context, hidden: bool) {
     ctx.mouse.cursor_hidden = hidden;
     ctx.gfx.window.set_cursor_visible(!hidden)
 }
 
 /// Modifies the mouse cursor type of the window.
-// TODO: Move to graphics context (This isn't input)
+#[deprecated(since = "0.8.2", note = "Use ctx.gfx.set_cursor_type instead")]
 pub fn set_cursor_type(ctx: &mut Context, cursor_type: CursorIcon) {
     ctx.mouse.cursor_type = cursor_type;
     ctx.gfx.window.set_cursor_icon(cursor_type);
